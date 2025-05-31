@@ -1,0 +1,115 @@
+footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000; 
+    color: #ffffff; 
+    text-align: center; 
+    padding: 0; 
+    margin-top: 45px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 60px; 
+}
+
+footer p {
+    margin: 0; 
+    padding: 0; 
+    line-height: 60px; 
+    
+}
+
+
+.header {
+  background-image: url('../assets/img/Header.jpg');
+  background-size: cover; 
+  background-position: center; 
+  height: 300px; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  color: white; 
+}
+
+.pizza-container {
+    display: flex;
+    margin-left: 10px;
+    margin-top: 40px;
+    border: 2px solid yellow;
+}
+
+.pizza-image {
+  
+    width: 400px; 
+    height:auto ; 
+}
+
+
+.card-pizza {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 10px;
+    padding: 10px;
+    width: 450px; 
+}
+
+
+.pizza-info {
+    text-align: left;
+}
+
+.pizza-name {
+  margin-top: 15px;
+    font-size: 1.5em;
+    
+}
+
+.ingredients-label {
+    font-size: 0.8em;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.ingredients {
+    font-size: 0.9em;
+}
+
+.ingredient-line {
+    border: none;
+    border-top: 1px solid #ccc; 
+    margin: 5px 20px; 
+    
+}
+
+.pizza-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around; 
+    width: 100%;
+  }
+  
+  .view-more {
+    background-color: transparent; 
+    border: 2px solid black;
+    cursor: pointer; 
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    height: 40px;
+    
+   
+  }
+
+.add-to-cart {
+    background-color: black; 
+    color: white; 
+    cursor: pointer; 
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
