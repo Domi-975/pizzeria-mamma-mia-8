@@ -1,0 +1,25 @@
+[33mcommit 2b13f8fddd27043597ce53359c0ae38d17548354[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Domi-975 <valtiare.25@gmail.com>
+Date:   Sat May 31 00:56:21 2025 -0400
+
+    first commit
+
+.gitignore
+README.md
+eslint.config.js
+index.html
+package-lock.json
+package.json
+public/vite.svg
+src/App.css
+src/App.jsx
+src/assets/img/Header.jpg
+src/assets/react.svg
+src/components/CardPizza.jsx
+src/components/Footer.jsx
+src/components/Header.jsx
+src/components/Home.jsx
+src/components/Navbar.jsx
+src/index.css
+src/main.jsx
+vite.config.js
