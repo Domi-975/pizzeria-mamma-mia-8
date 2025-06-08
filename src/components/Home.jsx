@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header'; 
-import CardPizza from '../components/CardPizza'; // Asegúrate de que la ruta sea correcta
+import CardPizza from '../components/CardPizza'; 
 
 const Home = () => {
   return (

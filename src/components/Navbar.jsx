@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { FaPizzaSlice, FaLock, FaUser  } from 'react-icons/fa'; 
+import { Link } from 'react-router-dom'; // Importa Link para la navegación
 
 const Navbar = () => {
   const total = 25000; // Total de la compra
@@ -13,20 +14,20 @@ const Navbar = () => {
           Pizzeria Mamma Mía!
         </a>
         <div className="collapse navbar-collapse d-flex justify-content-between">
-          <ul className="navbar-nav me-auto d-flex align-items-center" style={{gap: '15px'}}>
+          <ul className="navbar-nav me-auto d-flex align-items-center" style={{ gap: '15px' }}>
             {/* Botón Home siempre visible */}
             <li className="nav-item">
-              <button className="btn btn-link nav-link text-white">
-                  <FaPizzaSlice />{' '}
-                  Home
-              </button>
+              <Link to="/" className="btn btn-link nav-link text-white">
+                <FaPizzaSlice />{' '}
+                Home
+              </Link>
             </li>
             {/* Botones que dependen del token */}
             {token ? (
               <>
                 <li className="nav-item">
                   <button className="btn btn-link nav-link text-white">
-                    <FaUser />{' '}
+                    <FaUser  />{' '}
                     Profile
                   </button>
                 </li>
@@ -37,16 +38,16 @@ const Navbar = () => {
             ) : (
               <>
                 <li className="nav-item">
-                  <button className="btn btn-link nav-link text-white">
+                  <Link to="/login" className="btn btn-link nav-link text-white">
                     <FaLock />{' '}
                     Login
-                  </button>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <button className="btn btn-link nav-link text-white">
+                  <Link to="/register" className="btn btn-link nav-link text-white">
                     <FaLock />{' '}
                     Register
-                  </button>
+                  </Link>
                 </li>
               </>
             )}
