@@ -1,0 +1,84 @@
+.pizza-container {
+  display: flex;
+  flex-wrap: wrap; 
+  padding: 20px;
+  
+}
+
+.card-pizza {
+  background-color: white; 
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+  max-width: 410px; 
+}
+
+.pizza-image {
+  max-width: 400px; 
+  border-radius: 8px; 
+  
+}
+
+.pizza-name {
+  margin: 5px 0; 
+  text-align: center; 
+  padding: 4px; 
+  text-transform: capitalize; 
+}
+
+.ingredient-list {
+  list-style-type: none; 
+  padding: 0; 
+  width: 100%; 
+}
+
+.ingredient-item {
+  border: 1px solid #ddd; 
+  border-radius: 4px; 
+  padding: 4px; 
+  margin: 2px 0; 
+  display: flex; 
+  align-items: center; 
+}
+
+.price {
+  margin: 8px 0; 
+  text-align: center; 
+  font-weight: bold;
+  font-size: 1rem; 
+}
+
+.button-container {
+  display: flex; 
+  justify-content: space-around; 
+  width: 100%; 
+}
+
+.view-more-button {
+  background-color: white; 
+  border: 1px solid black; 
+  border-radius: 4px; 
+  padding: 6px 10px; 
+  cursor: pointer; 
+}
+
+.add-button {
+  background-color: black;
+  color: white; 
+  border: none; 
+  border-radius: 4px; 
+  padding: 6px 10px; 
+  cursor: pointer; 
+}
+
+.ingredients-title {
+  align-items: center;
+  padding-left: 4px;
+  margin: 5px 0; 
+  font-weight: normal; 
+  font-size: 1rem; 
+  color: rgba(0, 0, 0, 0.7); 
+}

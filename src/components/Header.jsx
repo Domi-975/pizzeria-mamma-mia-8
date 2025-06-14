@@ -14,7 +14,7 @@ const Header = () => {
     color: '#ffffff',
     textShadow: '2px 2px 6px rgba(0, 0, 0, 0.8)',
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    padding: '0 20px',
+    padding: '0 10px',
     userSelect: 'none',
   };
 

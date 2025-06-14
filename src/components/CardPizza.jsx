@@ -1,30 +1,36 @@
 import React from 'react';
+import './CardPizza.css'; 
 
 const CardPizza = ({ name, price, ingredients, img }) => {
-    return (
-        <div className="card-pizza">
-            <img src={img} alt={name} className="pizza-image" />
-            <div className="pizza-info">
-                <h3 className="pizza-name">{name}</h3>
-                <hr className="ingredient-line" />
-                <p className="ingredients-label">Ingredientes</p>
-                <p className="ingredients">
-                    <span role="img" aria-label="pizza">🍕</span>
-                    {ingredients.join(', ')}
-                </p>
-                <hr className="ingredient-line" />
-                <h2 className="pizza-price">Precio: ${price.toLocaleString('es-ES')}</h2>
-                <div className="buttons">
-                    <button className="view-more">
-                        <span>Ver más</span> <span role="img" aria-label="ver más">👀</span>
-                    </button>
-                    <button className="add-to-cart">
-                        Añadir <span role="img" aria-label="añadir">🛒</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
+  // Función para capitalizar la primera letra de la variedad
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  };
+
+  return (
+    <div className="card-pizza">
+      <img src={img} alt={name} className="pizza-image" />
+      <h2 className="pizza-name">{capitalizeFirstLetter(name)}</h2> {/* Se eliminó "Pizza" */}
+      {/* Título Ingredientes */}
+      <h3 className="ingredients-title">Ingredientes</h3>
+      <ul className="ingredient-list">
+        {ingredients.map((ingredient, index) => (
+          <li key={index} className="ingredient-item">
+            🍕 {ingredient}
+          </li>
+        ))}
+      </ul>
+      <p className="price">Precio: <strong>${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</strong></p>
+      <div className="button-container">
+        <button className="view-more-button">
+          Ver Más 👀
+        </button>
+        <button className="add-button">
+          Añadir 🛒
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default CardPizza;

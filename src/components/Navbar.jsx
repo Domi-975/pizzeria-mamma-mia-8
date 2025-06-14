@@ -1,7 +1,5 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import { FaPizzaSlice, FaLock, FaUser  } from 'react-icons/fa'; 
-import { Link } from 'react-router-dom'; // Importa Link para la navegación
 
 const Navbar = () => {
   const total = 25000; // Total de la compra
@@ -17,17 +15,16 @@ const Navbar = () => {
           <ul className="navbar-nav me-auto d-flex align-items-center" style={{ gap: '15px' }}>
             {/* Botón Home siempre visible */}
             <li className="nav-item">
-              <Link to="/" className="btn btn-link nav-link text-white">
-                <FaPizzaSlice />{' '}
+              <a href="/" className="btn btn-link nav-link text-white">
+                🍕{' '}
                 Home
-              </Link>
+              </a>
             </li>
             {/* Botones que dependen del token */}
             {token ? (
               <>
                 <li className="nav-item">
                   <button className="btn btn-link nav-link text-white">
-                    <FaUser  />{' '}
                     Profile
                   </button>
                 </li>
@@ -38,16 +35,16 @@ const Navbar = () => {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link to="/login" className="btn btn-link nav-link text-white">
-                    <FaLock />{' '}
+                  <a href="/login" className="btn btn-link nav-link text-white">
+                    🔐{' '}
                     Login
-                  </Link>
+                  </a>
                 </li>
                 <li className="nav-item">
-                  <Link to="/register" className="btn btn-link nav-link text-white">
-                    <FaLock />{' '}
+                  <a href="/register" className="btn btn-link nav-link text-white">
+                    🔐{' '}
                     Register
-                  </Link>
+                  </a>
                 </li>
               </>
             )}
@@ -63,3 +60,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

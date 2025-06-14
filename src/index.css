@@ -35,8 +35,8 @@ footer p {
 .pizza-container {
     display: flex;
     margin-left: 10px;
-    margin-top: 40px;
-    border: 2px solid yellow;
+    margin-top: 5px;
+    
 }
 
 .pizza-image {
