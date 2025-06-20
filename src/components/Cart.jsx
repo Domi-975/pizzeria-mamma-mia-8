@@ -36,7 +36,7 @@ const Cart = () => {
               alignItems: 'center', 
               marginBottom: '15px', 
               gap: '16px',
-              justifyContent: 'flex-start' // Align items to the left
+              justifyContent: 'flex-start' 
             }}
           >
             <img 
@@ -45,7 +45,7 @@ const Cart = () => {
               style={{ width: '70px', height: '70px', objectFit: 'cover', borderRadius: '6px' }} // Increased size
             />
             <h3 style={{ margin: '0 10px', flexGrow: 1, textTransform: 'capitalize' }}>
-              {item.name.replace(/Pizza/i, '').trim()} {/* Elimina "Pizza" y recorta espacios */}
+              {item.name.replace(/Pizza/i, '').trim()} 
             </h3>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
