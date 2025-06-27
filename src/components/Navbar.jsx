@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 const Navbar = () => {
@@ -8,20 +9,25 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#000' }}>
       <div className="container-fluid">
-        <a className="navbar-brand" href="#" style={{ color: '#fff' }}>
+        {/* Logo/Marca */}
+        <Link className="navbar-brand" to="/" style={{ color: '#fff' }}>
           Pizzeria Mamma Mía!
-        </a>
+        </Link>
+
         <div className="collapse navbar-collapse d-flex justify-content-between">
+          {/* Menú izquierdo */}
           <ul className="navbar-nav me-auto d-flex align-items-center" style={{ gap: '15px' }}>
             {/* Botón Home siempre visible */}
             <li className="nav-item">
-              <a href="/" className="btn btn-link nav-link text-white">
+              <Link to="/" className="btn btn-link nav-link text-white">
                 🍕{' '}
                 Home
-              </a>
+              </Link>
             </li>
+
             {/* Botones que dependen del token */}
             {token ? (
+              // Si hay token (usuario logueado)
               <>
                 <li className="nav-item">
                   <button className="btn btn-link nav-link text-white">
@@ -33,26 +39,32 @@ const Navbar = () => {
                 </li>
               </>
             ) : (
+              // Si no hay token (usuario no logueado)
               <>
                 <li className="nav-item">
-                  <a href="/login" className="btn btn-link nav-link text-white">
+                  <Link to="/login" className="btn btn-link nav-link text-white">
                     🔐{' '}
                     Login
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a href="/register" className="btn btn-link nav-link text-white">
+                  <Link to="/register" className="btn btn-link nav-link text-white">
                     🔐{' '}
                     Register
-                  </a>
+                  </Link>
                 </li>
               </>
             )}
           </ul>
-          {/* Botón Total a la derecha */}
-          <button className="btn btn-link nav-link text-white d-flex align-items-center">
+
+          {/* Carrito - AHORA CON LINK */}
+          <Link 
+            to="/cart" 
+            className="btn btn-link nav-link text-white d-flex align-items-center"
+            style={{ textDecoration: 'none' }}
+          >
             🛒 Total: ${total.toLocaleString()}
-          </button>
+          </Link>
         </div>
       </div>
     </nav>
@@ -60,5 +72,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
 
