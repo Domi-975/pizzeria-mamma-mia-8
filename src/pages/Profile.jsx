@@ -10,8 +10,8 @@ const Profile = () => {
   };
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      <Container className="flex-grow-1 py-5"> {/* flex-grow-1 para que ocupe toda la pantalla*/}
+    <div style={{ minHeight: "100vh", display: "flex", padding: "50px", flexDirection: "column" }}>
+      <Container className="flex-grow-1 py-5"> 
         <h1 className="text-center">Perfil de Usuario</h1>
         <p className="text-center">Email: {email}</p>
         <div className="text-center">

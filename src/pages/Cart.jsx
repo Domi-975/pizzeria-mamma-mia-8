@@ -1,31 +1,12 @@
-import React, { useState } from 'react';
-import { pizzaCart } from '../pizzas'; 
+import React, { useContext } from 'react';
+import { CartContext } from '../context/CartContext'; 
 
 const Cart = () => {
-  const [cart, setCart] = useState(pizzaCart);
-
-  const increaseCount = (id) => {
-    setCart(cart.map(item => 
-      item.id === id ? { ...item, count: item.count + 1 } : item
-    ));
-  };
-
-  const decreaseCount = (id) => {
-    setCart(cart.map(item => 
-      item.id === id 
-        ? { ...item, count: item.count > 1 ? item.count - 1 : 0 } 
-        : item
-    ).filter(item => item.count > 0)); 
-  };
-
-  const total = cart.reduce((acc, item) => acc + item.price * item.count, 0);
-
-  const formatPrice = (price) => {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  };
+  // Consume el contexto
+  const { cart, increaseCount, decreaseCount, total, formatPrice } = useContext(CartContext);
 
   return (
-    <div style={{ minHeight: '100vh', padding: '30px 20px 20px 20px', maxWidth: '600px', margin: '0 auto', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', padding: '60px 20px 20px 20px', maxWidth: '600px', margin: '20px auto', display: 'flex', flexDirection: 'column' }}>
       <h2 style={{ textAlign: 'left', marginBottom: '24px' }}>Detalles del Pedido</h2>
       <div>
         {cart.map(item => (
@@ -42,7 +23,7 @@ const Cart = () => {
             <img 
               src={item.img} 
               alt={item.name} 
-              style={{ width: '70px', height: '70px', objectFit: 'cover', borderRadius: '6px' }} // Increased size
+              style={{ width: '70px', height: '70px', objectFit: 'cover', borderRadius: '6px' }} 
             />
             <h3 style={{ margin: '0 10px', flexGrow: 1, textTransform: 'capitalize' }}>
               {item.name.replace(/Pizza/i, '').trim()} 

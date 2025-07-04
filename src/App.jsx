@@ -1,10 +1,10 @@
    import { Routes, Route } from "react-router-dom";
    import Footer from "./components/Footer";
    import Navbar from "./components/Navbar";
-   import Pizza from "./pages/Pizza"; // Importación (a pages/)
-   import Cart from "./pages/Cart";   // Importación (a pages/)
-   import Home from "./pages/Home";   // Importación (a pages/)
-   import Login from "./pages/Login";  
+   import Pizza from "./pages/Pizza"; 
+   import Cart from "./pages/Cart";   
+   import Home from "./pages/HomePage";   
+   import Login from "./pages/LoginPage";  
    import Register from "./pages/Register";
    import NotFound from "./pages/NotFound";
    import Profile from "./pages/Profile";

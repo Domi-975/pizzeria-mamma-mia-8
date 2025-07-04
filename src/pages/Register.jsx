@@ -39,15 +39,15 @@ const RegisterPage = () => {
                     padding: 2rem;
                     box-sizing: border-box;
                     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+                    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
                     position: relative;
                 }
 
                 .register-card {
                     background: #ffffff;
-                    width: 100%;
+                    width: 80%;
                     max-width: 400px;
-                    padding: 3rem 2rem;
+                    padding:  2rem;
                     border-radius: 0.75rem;
                     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
                     display: flex;

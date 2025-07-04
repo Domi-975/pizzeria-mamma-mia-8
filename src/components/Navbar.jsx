@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
+import { CartContext } from '../context/CartContext';
 
 const Navbar = () => {
-  const total = 25000; // Total de la compra
+  const { total, formatPrice } = useContext(CartContext); // Consume el contexto
   const token = false; // Simulación de estado de login
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#000' }}>
+    <nav className="navbar navbar-expand-lg navbar-dark" style={{ 
+      backgroundColor: '#000', 
+      position: 'fixed', // Fijo en la parte superior
+      top: 0, // Alineado en la parte superior
+      left: 0, // Alineado a la izquierda
+      width: '100%', // Ancho completo
+      zIndex: 1000
+    
+    }}>
       <div className="container-fluid">
         {/* Logo/Marca */}
         <Link className="navbar-brand" to="/" style={{ color: '#fff' }}>
@@ -63,7 +72,7 @@ const Navbar = () => {
             className="btn btn-link nav-link text-white d-flex align-items-center"
             style={{ textDecoration: 'none' }}
           >
-            🛒 Total: ${total.toLocaleString()}
+            🛒 Total: ${formatPrice(total)} {/* Usa formatPrice para mostrar el total */}
           </Link>
         </div>
       </div>
