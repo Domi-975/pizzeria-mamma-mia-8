@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
+
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [alert, setAlert] = useState({ visible: false, type: '', message: '' });
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

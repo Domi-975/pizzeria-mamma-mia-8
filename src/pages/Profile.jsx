@@ -6,7 +6,7 @@ const Profile = () => {
   const email = "usuario@example.com";
 
   const handleLogout = () => {
-    alert("Cerrando sesión...");
+    
   };
 
   return (

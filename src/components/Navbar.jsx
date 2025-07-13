@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { CartContext } from '../context/CartContext';
+import { UserContext } from '../context/UserContext'; // Importa el UserContext
 
 const Navbar = () => {
-  const { total, formatPrice } = useContext(CartContext); // Consume el contexto
-  const token = false; // Simulación de estado de login
+  const { total, formatPrice } = useContext(CartContext); // Consume el contexto del carrito
+  const { token, logout } = useContext(UserContext); // Consume el UserContext
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark" style={{ 
@@ -15,7 +16,6 @@ const Navbar = () => {
       left: 0, // Alineado a la izquierda
       width: '100%', // Ancho completo
       zIndex: 1000
-    
     }}>
       <div className="container-fluid">
         {/* Logo/Marca */}
@@ -39,12 +39,14 @@ const Navbar = () => {
               // Si hay token (usuario logueado)
               <>
                 <li className="nav-item">
-                  <button className="btn btn-link nav-link text-white">
+                  <button className="btn btn-link nav-link text-white" onClick={() => alert('Profile')}>
                     Profile
                   </button>
                 </li>
                 <li className="nav-item">
-                  <button className="btn btn-link nav-link text-white">Logout</button>
+                  <button className="btn btn-link nav-link text-white" onClick={logout}>
+                    Logout
+                  </button>
                 </li>
               </>
             ) : (
