@@ -61,6 +61,33 @@ export const CartProvider = ({ children }) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
+
+// Nueva función para manejar el checkout
+  const handleCheckout = async () => {
+    try {
+      const response = await fetch('/api/checkouts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cart), // Envía el carrito al backend
+      });
+      if (!response.ok) {
+        throw new Error('Error al realizar la compra');
+      }
+
+
+const data = await response.json();
+      setSuccessMessage('Compra realizada con éxito!'); // Mensaje de éxito
+      // Aquí puedes limpiar el carrito si es necesario
+      // setCart([]); // Descomentar si deseas vaciar el carrito después de la compra
+    } catch (error) {
+      console.error('Error:', error);
+      setSuccessMessage('Hubo un problema al realizar la compra.'); // Mensaje de error
+    }
+  };
+
+
   return (
     <CartContext.Provider
       value={{

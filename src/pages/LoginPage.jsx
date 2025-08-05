@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-
+// src/pages/LoginPage.jsx
+import React, { useContext, useState } from 'react'; // Asegúrate de importar useState
+import { UserContext } from '../context/UserContext';
 
 const LoginPage = () => {
+  const { login } = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [alert, setAlert] = useState({ visible: false, type: '', message: '' });
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      showAlert('error', 'Todos los campos son obligatorios.');
-    } else if (password.length < 6) {
-      showAlert('error', 'La contraseña debe tener al menos 6 caracteres.');
-    } else {
+    try {
+      await login(email, password);
       showAlert('success', 'Autenticación exitosa.');
+    } catch (error) {
+      showAlert('error', error.message);
     }
   };
 
@@ -117,7 +117,6 @@ const LoginPage = () => {
           outline: none;
         }
 
-        /* Overlay for alert modal */
         .alert-overlay {
           position: fixed;
           top: 0;
@@ -131,9 +130,8 @@ const LoginPage = () => {
           z-index: 1000;
         }
 
-        /* Alert box */
         .alert-box {
-          background: black; /* Cambiado a negro */
+          background: black;
           padding: 2rem 2.5rem;
           border-radius: 12px;
           box-shadow: 0 8px 24px rgba(0,0,0,0.15);
@@ -219,7 +217,7 @@ const LoginPage = () => {
               </p>
               <button
                 className="alert-button"
-                onClick={() => setAlert({ visible: false, type: '', message: '' })}
+                onClick={closeAlert}
               >
                 Cerrar
               </button>

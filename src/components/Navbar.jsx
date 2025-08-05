@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Importa useNavigate
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { CartContext } from '../context/CartContext';
 import { UserContext } from '../context/UserContext'; // Importa el UserContext
@@ -7,6 +7,12 @@ import { UserContext } from '../context/UserContext'; // Importa el UserContext
 const Navbar = () => {
   const { total, formatPrice } = useContext(CartContext); // Consume el contexto del carrito
   const { token, logout } = useContext(UserContext); // Consume el UserContext
+  const navigate = useNavigate(); // Inicializa useNavigate
+
+  const handleLogout = () => {
+    logout(); // Llama al método logout del contexto
+    navigate('/login'); // Redirige a la página de login
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark" style={{ 
@@ -39,12 +45,12 @@ const Navbar = () => {
               // Si hay token (usuario logueado)
               <>
                 <li className="nav-item">
-                  <button className="btn btn-link nav-link text-white" onClick={() => alert('Profile')}>
+                  <Link to="/profile" className="btn btn-link nav-link text-white">
                     Profile
-                  </button>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <button className="btn btn-link nav-link text-white" onClick={logout}>
+                  <button className="btn btn-link nav-link text-white" onClick={handleLogout}>
                     Logout
                   </button>
                 </li>
@@ -83,6 +89,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
 
 
