@@ -12,6 +12,10 @@ export const CartProvider = ({ children }) => {
     return [];
   });
 
+  // Estado para manejar el mensaje de éxito
+  const [successMessage, setSuccessMessage] = useState('');
+  const [loading, setLoading] = useState(false); // Estado para manejar el estado de carga
+
   // Persistir carrito en localStorage
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -21,14 +25,12 @@ export const CartProvider = ({ children }) => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === pizza.id);
       if (existingItem) {
-        
         return prevCart.map(item =>
           item.id === pizza.id 
             ? { ...item, count: item.count + 1 } 
             : item
         );
       }
-      
       return [...prevCart, { ...pizza, count: 1 }];
     });
   };
@@ -61,9 +63,11 @@ export const CartProvider = ({ children }) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
-
-// Nueva función para manejar el checkout
+  // Nueva función para manejar el checkout
   const handleCheckout = async () => {
+    setLoading(true); // Iniciar el estado de carga
+    setSuccessMessage('Procesando pago...'); // Mensaje de procesamiento
+
     try {
       const response = await fetch('/api/checkouts', {
         method: 'POST',
@@ -76,17 +80,17 @@ export const CartProvider = ({ children }) => {
         throw new Error('Error al realizar la compra');
       }
 
-
-const data = await response.json();
+      const data = await response.json();
       setSuccessMessage('Compra realizada con éxito!'); // Mensaje de éxito
       // Aquí puedes limpiar el carrito si es necesario
-      // setCart([]); // Descomentar si deseas vaciar el carrito después de la compra
+      // setCart([]); // Descomentar para vaciar el carrito después de la compra
     } catch (error) {
       console.error('Error:', error);
       setSuccessMessage('Hubo un problema al realizar la compra.'); // Mensaje de error
+    } finally {
+      setLoading(false); // Finalizar el estado de carga
     }
   };
-
 
   return (
     <CartContext.Provider
@@ -97,7 +101,10 @@ const data = await response.json();
         increaseCount,
         decreaseCount,
         total,
-        formatPrice
+        formatPrice,
+        handleCheckout, 
+        successMessage, // Proveer el mensaje de éxito
+        loading // Proveer el estado de carga
       }}
     >
       {children}

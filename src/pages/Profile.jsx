@@ -1,50 +1,23 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import { Container, Button, Spinner, Alert } from 'react-bootstrap';
 
 const Profile = () => {
-  const { logout, token } = useContext(UserContext);
+  const { token, logout, getUserProfile, userProfile, loading, error } = useContext(UserContext);
   const navigate = useNavigate();
-  const [email, setEmail] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Redirigir a la página de login si no hay token
     if (!token) {
-      navigate('/login');
+      navigate('/login'); // Redirigir si no hay token
     } else {
-      fetchUserProfile(); // Llama a la función para obtener el perfil del usuario
+      getUserProfile(); // Obtener el perfil del usuario al cargar el componente
     }
-  }, [token, navigate]);
-
-  const fetchUserProfile = async () => {
-    try {
-      const response = await fetch('/api/auth/me', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Error fetching user profile');
-      }
-
-      const data = await response.json();
-      setEmail(data.email); // Establece el email del usuario
-    } catch (error) {
-      setError(error.message); // Maneja el error
-    } finally {
-      setLoading(false); // Cambia el estado de carga
-    }
-  };
+  }, [token, navigate]); // Asegúrate de que las dependencias sean correctas
 
   const handleLogout = () => {
-    logout(); // Llama al método logout del contexto
-    navigate('/login'); // Redirige a la página de login después de cerrar sesión
+    logout();
+    navigate('/login'); // Redirigir a la página de login después de cerrar sesión
   };
 
   if (loading) {
@@ -56,17 +29,16 @@ const Profile = () => {
   }
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", padding: "50px", flexDirection: "column" }}>
-      <Container className="flex-grow-1 py-5"> 
-        <h1 className="text-center">Perfil de Usuario</h1>
-        <p className="text-center">Email: {email}</p>
-        <div className="text-center">
-          <Button onClick={handleLogout} variant="danger">Cerrar sesión</Button>
-        </div>
-      </Container>
-    </div>
+    <Container className="py-5">
+      <h1 className="text-center mt-4">Perfil de Usuario</h1>
+      <p className="text-center">Email: {userProfile?.email}</p>
+      <div className="text-center">
+        <Button onClick={handleLogout} variant="danger">Cerrar sesión</Button>
+      </div>
+    </Container>
   );
 };
 
 export default Profile;
+
 
